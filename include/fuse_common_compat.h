@@ -10,11 +10,11 @@
    Do not include this file directly! */
 
 struct fuse_file_info_compat {
-	int flags;
-	unsigned long fh;
-	int writepage;
-	unsigned int direct_io : 1;
-	unsigned int keep_cache : 1;
+    int flags;
+    unsigned long fh;
+    int writepage;
+    unsigned int direct_io : 1;
+    unsigned int keep_cache : 1;
 };
 
 int fuse_mount_compat25(const char *mountpoint, struct fuse_args *args);

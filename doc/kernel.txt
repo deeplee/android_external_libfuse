@@ -240,10 +240,10 @@ How are requirements fulfilled?
  A) The mount owner could gain elevated privileges by either:
 
      1) creating a filesystem containing a device file, then opening
-	this device
+    this device
 
      2) creating a filesystem containing a suid or sgid application,
-	then executing this application
+    then executing this application
 
     The solution is not to allow opening device files and ignore
     setuid and setgid bits when executing programs.  To ensure this
@@ -286,18 +286,18 @@ How are requirements fulfilled?
            system process to eat up diskspace, memory or other
            resources, again causing DoS.
 
-	The solution to this as well as B) is not to allow processes
-	to access the filesystem, which could otherwise not be
-	monitored or manipulated by the mount owner.  Since if the
-	mount owner can ptrace a process, it can do all of the above
-	without using a FUSE mount, the same criteria as used in
-	ptrace can be used to check if a process is allowed to access
-	the filesystem or not.
+    The solution to this as well as B) is not to allow processes
+    to access the filesystem, which could otherwise not be
+    monitored or manipulated by the mount owner.  Since if the
+    mount owner can ptrace a process, it can do all of the above
+    without using a FUSE mount, the same criteria as used in
+    ptrace can be used to check if a process is allowed to access
+    the filesystem or not.
 
-	Note that the ptrace check is not strictly necessary to
-	prevent B/2/i, it is enough to check if mount owner has enough
-	privilege to send signal to the process accessing the
-	filesystem, since SIGSTOP can be used to get a similar effect.
+    Note that the ptrace check is not strictly necessary to
+    prevent B/2/i, it is enough to check if mount owner has enough
+    privilege to send signal to the process accessing the
+    filesystem, since SIGSTOP can be used to get a similar effect.
 
 I think these limitations are unacceptable?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

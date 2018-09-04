@@ -18,27 +18,27 @@ else
 iconv_source =
 endif
 
-libfuse_la_SOURCES = 		\
-	fuse.c			\
-	fuse_i.h		\
-	fuse_kern_chan.c	\
-	fuse_loop.c		\
-	fuse_loop_mt.c		\
-	fuse_lowlevel.c		\
-	fuse_misc.h		\
-	fuse_mt.c		\
-	fuse_opt.c		\
-	fuse_session.c		\
-	fuse_signals.c		\
-	buffer.c		\
-	cuse_lowlevel.c		\
-	helper.c		\
-	modules/subdir.c	\
-	$(iconv_source)		\
-	$(mount_source)
+libfuse_la_SOURCES =         \
+    fuse.c            \
+    fuse_i.h        \
+    fuse_kern_chan.c    \
+    fuse_loop.c        \
+    fuse_loop_mt.c        \
+    fuse_lowlevel.c        \
+    fuse_misc.h        \
+    fuse_mt.c        \
+    fuse_opt.c        \
+    fuse_session.c        \
+    fuse_signals.c        \
+    buffer.c        \
+    cuse_lowlevel.c        \
+    helper.c        \
+    modules/subdir.c    \
+    $(iconv_source)        \
+    $(mount_source)
 
 libfuse_la_LDFLAGS = -pthread @libfuse_libs@ -version-number 2:9:8 \
-	-Wl,--version-script,$(srcdir)/fuse_versionscript
+    -Wl,--version-script,$(srcdir)/fuse_versionscript
 
 if NETBSD
 libfuse_la_LIBADD = -lperfuse -lpuffs

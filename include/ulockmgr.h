@@ -6,6 +6,7 @@
   See the file COPYING.LIB.
 */
 
+#include "fuse_lowlevel.h"
 #include <stdint.h>
 #include <fcntl.h>
 #include <sys/types.h>
@@ -21,4 +22,4 @@
  * @return 0 on success -errno on error
  */
 int ulockmgr_op(int fd, int cmd, struct flock *lock, const void *owner,
-		size_t owner_len);
+        size_t owner_len);
