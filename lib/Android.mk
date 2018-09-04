@@ -39,7 +39,7 @@ common_shared_libraries := \
 
 common_cflags := \
     -D_FILE_OFFSET_BITS=64 \
-    -DFUSE_USE_VERSION=26 \
+    -DFUSE_USE_VERSION=29 \
     -fno-strict-aliasing
 
 common_ldflags := \
