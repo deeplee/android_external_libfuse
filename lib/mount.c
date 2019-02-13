@@ -42,6 +42,10 @@
 #define FUSERMOUNT_PROG		"fusermount"
 #define FUSE_COMMFD_ENV		"_FUSE_COMMFD"
 
+#if defined(__ANDROID__) && !defined(FUSERMOUNT_DIR)
+# define FUSERMOUNT_DIR "/system/xbin"
+#endif
+
 #ifndef HAVE_FORK
 #define fork() vfork()
 #endif
@@ -407,7 +411,7 @@ static int fuse_mount_fusermount(const char *mountpoint, struct mount_opts *mo,
 	rv = receive_fd(fds[1]);
 
 	if (!mo->auto_unmount) {
-		/* with auto_unmount option fusermount will not exit until 
+		/* with auto_unmount option fusermount will not exit until
 		   this socket is closed */
 		close(fds[1]);
 		waitpid(pid, NULL, 0); /* bury zombie */
@@ -523,7 +527,7 @@ static int fuse_mount_sys(const char *mnt, struct mount_opts *mo,
 				fprintf(stderr,
 					"fuse: 'fuseblk' support missing\n");
 			else
-				fprintf(stderr, "fuse: mount failed: %s\n",
+				fprintf(stderr, "fuse: mount %s, to %s failed: %s\n", source, mnt,
 					strerror(errno_save));
 		}
 
